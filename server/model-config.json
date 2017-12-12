@@ -14,25 +14,25 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "posgresql_ds"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "posgresql_ds",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "posgresql_ds",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "posgresql_ds",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "posgresql_ds",
     "public": false
   }
 }

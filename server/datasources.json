@@ -2,5 +2,10 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "posgresql_ds": {
+    "url": "",
+    "name": "posgresql_ds",
+    "connector": "postgresql"
   }
 }
