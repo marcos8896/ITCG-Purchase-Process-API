@@ -42,5 +42,9 @@
   "Requisition": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Concept": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
