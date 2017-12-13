@@ -1,0 +1,46 @@
+{
+  "name": "Requisition",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "folio": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "action": {
+      "type": "string",
+      "required": true
+    },
+    "acceptance_date": {
+      "type": "date",
+      "required": true
+    },
+    "check_boss": {
+      "type": "boolean",
+      "default": false
+    },
+    "check_planning": {
+      "type": "boolean",
+      "default": false
+    },
+    "check_subdirection": {
+      "type": "boolean",
+      "default": false
+    },
+    "state": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

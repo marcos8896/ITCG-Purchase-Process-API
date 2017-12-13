@@ -38,5 +38,9 @@
   "Provider": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Requisition": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
