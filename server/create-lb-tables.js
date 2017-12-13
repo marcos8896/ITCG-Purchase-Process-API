@@ -1,5 +1,4 @@
 var server = require('./server');
-console.log('server: ', server);
 var ds = server.dataSources.posgresql_ds;
 var lbTables = ['User', 'AccessToken', 'ACL', 'RoleMapping', 'Role'];
 ds.automigrate(lbTables, function(er) {
