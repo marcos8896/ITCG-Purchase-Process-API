@@ -34,7 +34,7 @@
       "type": "boolean",
       "default": false
     },
-    "state": {
+    "status": {
       "type": "string",
       "required": true
     }
