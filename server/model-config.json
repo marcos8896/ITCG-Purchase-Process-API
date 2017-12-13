@@ -62,5 +62,9 @@
   "Purchase_order": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Purchase_order_Requisition": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
