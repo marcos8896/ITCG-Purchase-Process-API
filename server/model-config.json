@@ -50,5 +50,9 @@
   "Concept_Requisition": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Subdirection": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
