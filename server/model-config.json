@@ -70,5 +70,9 @@
   "Input_output": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Input_output_details": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
