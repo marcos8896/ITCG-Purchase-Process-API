@@ -16,7 +16,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "subdirection": {
+      "type": "belongsTo",
+      "model": "Subdirection",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
