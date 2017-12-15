@@ -1,0 +1,28 @@
+{
+  "name": "Budget_key_details",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "action_number": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "budget_key": {
+      "type": "belongsTo",
+      "model": "Budget_key",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
