@@ -24,7 +24,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "requisition": {
+      "type": "belongsTo",
+      "model": "Requisition",
+      "foreignKey": ""
+    },
+    "concept": {
+      "type": "belongsTo",
+      "model": "Concept",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
