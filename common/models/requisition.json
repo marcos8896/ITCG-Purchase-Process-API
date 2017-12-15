@@ -40,7 +40,43 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "department": {
+      "type": "belongsTo",
+      "model": "Department",
+      "foreignKey": ""
+    },
+    "provider": {
+      "type": "belongsTo",
+      "model": "Provider",
+      "foreignKey": ""
+    },
+    "input_output": {
+      "type": "hasOne",
+      "model": "Input_output",
+      "foreignKey": "requisitionId"
+    },
+    "concept_requisition": {
+      "type": "hasMany",
+      "model": "Concept_Requisition",
+      "foreignKey": "requisitionId"
+    },
+    "input_output_details": {
+      "type": "hasMany",
+      "model": "Input_output_details",
+      "foreignKey": "requisitionId"
+    },
+    "purchase_order_Requisition": {
+      "type": "hasMany",
+      "model": "Purchase_order_Requisition",
+      "foreignKey": "requisitionId"
+    },
+    "budget_key": {
+      "type": "belongsTo",
+      "model": "Budget_key",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
