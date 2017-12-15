@@ -17,7 +17,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "requisition": {
+      "type": "belongsTo",
+      "model": "Requisition",
+      "foreignKey": ""
+    },
+    "department": {
+      "type": "belongsTo",
+      "model": "Department",
+      "foreignKey": ""
+    },
+    "purchase_order": {
+      "type": "belongsTo",
+      "model": "Purchase_order",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
