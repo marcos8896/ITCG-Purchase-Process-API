@@ -12,7 +12,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "provider": {
+      "type": "belongsTo",
+      "model": "Provider",
+      "foreignKey": ""
+    },
+    "purchase_order_requisition": {
+      "type": "hasMany",
+      "model": "Purchase_order_Requisition",
+      "foreignKey": "purchase_orderId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -21,6 +21,11 @@
       "type": "hasMany",
       "model": "Department",
       "foreignKey": "subdirectionId"
+    },
+    "budget_key": {
+      "type": "hasMany",
+      "model": "Budget_key",
+      "foreignKey": "subdirectionId"
     }
   },
   "acls": [],
