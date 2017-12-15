@@ -16,7 +16,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "provider": {
+      "type": "belongsTo",
+      "model": "Provider",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
