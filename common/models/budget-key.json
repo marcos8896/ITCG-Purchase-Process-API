@@ -1,0 +1,43 @@
+{
+  "name": "Budget_key",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "budget_key_id": {
+      "type": "string",
+      "required": true
+    },
+    "piid_ojectives": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": ""
+    },
+    "budget_key_details": {
+      "type": "hasMany",
+      "model": "Budget_key_details",
+      "foreignKey": "budget_keyId"
+    },
+    "requisition": {
+      "type": "hasMany",
+      "model": "Requisition",
+      "foreignKey": "budget_keyId"
+    },
+    "subdirection": {
+      "type": "belongsTo",
+      "model": "Subdirection",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
