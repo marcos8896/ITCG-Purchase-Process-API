@@ -74,5 +74,21 @@
   "Input_output_details": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Project": {
+    "dataSource": "posgresql_ds",
+    "public": true
+  },
+  "Program": {
+    "dataSource": "posgresql_ds",
+    "public": true
+  },
+  "Budget_key": {
+    "dataSource": "posgresql_ds",
+    "public": true
+  },
+  "Budget_key_details": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
