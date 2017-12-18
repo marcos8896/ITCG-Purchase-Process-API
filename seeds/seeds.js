@@ -17,14 +17,26 @@ function seedProvider( records ) {
 
 }
 
-function seedConcept() {
+function seedConcept( records ) {
   
+  const promises = [];
+  for (let i = 0; i < records; i++) {
+    promises.push(models.Concept.create({
+      "description": faker.lorem.sentences(10)
+    }));
+  }
+
+  return Promise.all(promises);
+
 }
 
 function seedAll() {
-  const seedsPromises = [ seedProvider(25) ];
+  const seedsPromises = [ seedProvider(25), seedConcept(25) ];
   
-  Promise.all(seedsPromises).then( () => console.log("Ya estufas."));
+  Promise.all(seedsPromises).then( () => {
+    console.log("Ya estufas.");
+    process.exit();
+  });
 }
 
 seedAll();
