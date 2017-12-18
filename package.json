@@ -8,7 +8,10 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "posttest": "npm run lint && nsp check"
+    "posttest": "npm run lint && nsp check",
+    "create-tables": "node server/create-lb-tables",
+    "seeds": "node seeds/seeds",
+    "migrate": "node server/create-lb-tables && node seeds/seeds"
   },
   "dependencies": {
     "compression": "^1.0.3",
