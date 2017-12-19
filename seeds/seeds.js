@@ -1,6 +1,7 @@
 // const models = require('../server/server').models;
 // const faker = require('faker/locale/es_MX');
 const asyncSeries = require('async').series;
+const fileExists = require('file-exists');
 let arrayModels = [];
 
 function getModelsContentFromJSONs( cb ) {
@@ -24,18 +25,46 @@ function getModelsContentFromJSONs( cb ) {
   });
 }
 
-function prepareSeedsModels() {
+function prepareSeedsModels( cb ) {
   arrayModels.forEach( model => 
     model.properties_seeds = model.properties_seeds.map( prop => 
       prop = { [prop]: "" }
     )
   );
   console.log('arrayModels: ', JSON.stringify( arrayModels, null, '  ' ));
+  cb( null );
+}
+
+function checkJSONSeedsAvailability( cb ) {
+
+  let promises = [];
+  arrayModels.forEach( model => {
+    promises.push(
+      fileExists(`./seeds/seedModels/${model.filename}`).then(exists => {
+        model.fileExists = exists;
+        console.log(exists); // OUTPUTS: true or false
+      })
+    )
+  })
+
+  Promise.all(promises).then( () => cb( null ));
+  // const parallel = require('async').parallel;
+
+  // parallel( fileExists() )
+  // console.log('arrayModels: ', JSON.stringify( arrayModels, null, '  ' ));
+  
+}
+
+function writeRemainingJSONFiles( cb ) {
+  console.log('arrayModels: ', JSON.stringify( arrayModels.fileExists, null, '  ' ));
+  
 }
 
 asyncSeries([
   cb => getModelsContentFromJSONs( cb ),
   cb => prepareSeedsModels( cb ),
+  cb => checkJSONSeedsAvailability( cb ),
+  cb => writeJSONSeeds( cb ),
   cb => seedModel( cb ) 
 ]);
 
