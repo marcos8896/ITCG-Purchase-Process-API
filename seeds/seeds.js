@@ -1,48 +1,69 @@
 // const models = require('../server/server').models;
 // const faker = require('faker/locale/es_MX');
-// const loadJsonFile = require('load-json-file');
-// console.log('loadJsonFile: ', loadJsonFile);
-const arrayModels = [];
+const asyncSeries = require('async').series;
+let arrayModels = [];
 
-function getModelsContentFromJSONs() {
+function getModelsContentFromJSONs( cb ) {
   const readfiles = require('node-readfiles');
 
   readfiles('./common/models/', { filter: '*.json' }, (err, filename, contents) => {
     if (err) throw err;
-    arrayModels.push({ name: JSON.parse(contents).name, properties: Object.keys(JSON.parse(contents).properties) });
-  }).then(function (files) {
 
-    console.log('arrayModels: ', JSON.stringify( arrayModels, null, '  ' ));
-  }).catch(function (err) {
+    let json = {
+      filename, 
+      name: JSON.parse(contents).name, 
+      properties_seeds: Object.keys(JSON.parse(contents).properties)      
+    }
+
+    arrayModels.push(json);
+  })
+  .then(files =>  cb( null ))
+  .catch( err => {
     console.log('Error reading files:', err.message);
+    cb( err );
   });
 }
 
-getModelsContentFromJSONs();
-// function seedModel( model ,records ) {
+function prepareSeedsModels() {
+  arrayModels.forEach( model => 
+    model.properties_seeds = model.properties_seeds.map( prop => 
+      prop = { [prop]: "" }
+    )
+  );
+  console.log('arrayModels: ', JSON.stringify( arrayModels, null, '  ' ));
+}
 
-//   const promises = [];
-//   for (let i = 0; i < records; i++) {
-//     promises.push(models.Provider.create({
-//       "name": faker.name.findName(),
-//       "phone": faker.phone.phoneNumber(),
-//       "address": faker.address.streetAddress() + faker.address.city() + faker.address.country(),
-//       "email": faker.internet.email()
-//     }));
-//   }
+asyncSeries([
+  cb => getModelsContentFromJSONs( cb ),
+  cb => prepareSeedsModels( cb ),
+  cb => seedModel( cb ) 
+]);
 
-//   return Promise.all(promises);
+function seedModel( cb ) {
 
-// }
+  const promises = [];
+  // console.log("gg", arrayModels[3].name);
+  // for (let i = 0; i < records; i++) {
+  //   promises.push(models[arrayModels[3].name].create({
+  //     "name": faker.name.findName(),
+  //     "phone": faker.phone.phoneNumber(),
+  //     "address": faker.address.streetAddress() + faker.address.city() + faker.address.country(),
+  //     "email": faker.internet.email()
+  //   }));
+  // }
 
-// function seedAll() {
-//   const seedsPromises = [ 
-//     seedModel( "Provider" ) ];
+  return Promise.all(promises);
 
-//   Promise.all(seedsPromises).then( () => {
-//     console.log("Ya estufas.");
-//     // process.exit();
-//   });
-// }
+}
+
+function seedAll( cb ) {
+  const seedsPromises = [ 
+    seedModel( "Provider" ) ];
+
+  Promise.all(seedsPromises).then( () => {
+    console.log("Ya estufas.");
+    // process.exit();
+  });
+}
 
 // seedAll();
