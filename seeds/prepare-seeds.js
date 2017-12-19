@@ -1,7 +1,6 @@
-// const models = require('../server/server').models;
-// const faker = require('faker/locale/es_MX');
 const asyncSeries = require('async').series;
 const fileExists = require('file-exists');
+const mkdirp = require('mkdirp');
 let arrayModels = [];
 
 function getModelsContentFromJSONs(cb) {
@@ -31,7 +30,6 @@ function prepareSeedsModels(cb) {
       prop = { [prop]: "" }
     )
   );
-  // console.log('arrayModels: ', JSON.stringify( arrayModels, null, '  ' ));
   cb(null);
 }
 
@@ -50,11 +48,6 @@ function checkJSONSeedsAvailability(cb) {
 
 
   Promise.all(promises).then(() => cb(null));
-  // const parallel = require('async').parallel;
-
-  // parallel( fileExists() )
-  // console.log('arrayModels: ', JSON.stringify( arrayModels, null, '  ' ));
-
 }
 
 function writeRemainingJSONFiles(cb) {
@@ -78,45 +71,37 @@ function writeRemainingJSONFiles(cb) {
     })
 
   }, err => {
+    console.log("izi")
     if (err) cb(err);
     else cb(null);
 
   })
 }
 
-asyncSeries([
-  cb => getModelsContentFromJSONs(cb),
-  cb => prepareSeedsModels(cb),
-  cb => checkJSONSeedsAvailability(cb),
-  cb => writeRemainingJSONFiles(cb),
-  cb => seedModel(cb)
-]);
-
-function seedModel(cb) {
-  console.log("izi")
-  const promises = [];
-  // console.log("gg", arrayModels[3].name);
-  // for (let i = 0; i < records; i++) {
-  //   promises.push(models[arrayModels[3].name].create({
-  //     "name": faker.name.findName(),
-  //     "phone": faker.phone.phoneNumber(),
-  //     "address": faker.address.streetAddress() + faker.address.city() + faker.address.country(),
-  //     "email": faker.internet.email()
-  //   }));
-  // }
-
-  return Promise.all(promises);
-
-}
-
-function seedAll(cb) {
-  const seedsPromises = [
-    seedModel("Provider")];
-
-  Promise.all(seedsPromises).then(() => {
-    console.log("Ya estufas.");
-    // process.exit();
+function checkIfDirectoryExists( cb ) {
+  mkdirp('./seeds/seedModels/', (err) => {
+    if (err) cb( err );
+    cb( null );
   });
 }
 
+asyncSeries([
+  cb => getModelsContentFromJSONs(cb),
+  cb => prepareSeedsModels(cb),
+  cb => checkIfDirectoryExists(cb),
+  cb => checkJSONSeedsAvailability(cb),
+  cb => writeRemainingJSONFiles(cb)
+], (err, results) => {
+  console.log('asyncSeries: ', err);
+});
+
+// function seedAll(cb) {
+//   const seedsPromises = [
+//     seedModel("Provider")];
+
+//   Promise.all(seedsPromises).then(() => {
+//     console.log("Ya estufas.");
+//     // process.exit();
+//   });
+// }
 // seedAll();

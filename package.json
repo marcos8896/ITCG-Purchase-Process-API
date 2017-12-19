@@ -10,8 +10,9 @@
     "start": "node .",
     "posttest": "npm run lint && nsp check",
     "create-tables": "node server/create-lb-tables",
-    "seeds": "node seeds/seeds",
-    "migrate": "node server/create-lb-tables && node seeds/seeds"
+    "prepare:seeds": "node seeds/prepare-seeds",
+    "execute:seeds": "node seeds/execute-seeds",
+    "migrate": "node server/create-lb-tables && node seeds/prepare-seeds"
   },
   "dependencies": {
     "async": "^2.6.0",
