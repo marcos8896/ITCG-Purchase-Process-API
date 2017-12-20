@@ -31,7 +31,15 @@ function getModelsSeedsFromJSONs( cb ) {
 }
 
 function seedModel( cb ) {
-    let Model = arrayModels.find( model => model.name == "Provider")
+    let Model = arrayModels.find( model => model.name == singleModel)
+    console.log('Model: ', Model);
+
+    //Validate if the Model exists
+    if( !!!Model ) return cb("Modelo no encontrado.");
+
+    //Validate if numRecords is a valid number
+    if(typeof( numRecords ) !== "number") return cb("Número de records no válido.")
+    
     let fakeModel = { }
     const fakeModelsArray = [];
     for (let i = 0; i < numRecords; i++) {
@@ -52,7 +60,7 @@ series([
   cb => getModelsSeedsFromJSONs(cb),
   cb => seedModel(cb)
 ], err => {
-  if(err) console.log('Error on series: ', err);
+  if(err) console.log(err);
   else console.log("Ya acabé, men");
   process.exit(1);
 });
