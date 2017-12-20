@@ -1,5 +1,7 @@
 'use strict';
 
-module.exports = function(Budgetkey) {
+module.exports = Budgetkey => {
+    Budgetkey.validatesLengthOf('budget_key_id', {max: 15, message: {max: 'La clave presupuestal es muy larga.'}});
+    Budgetkey.validatesUniquenessOf('budget_key_id', {message: 'La clave presupuestal debe ser unica.'});
 
 };

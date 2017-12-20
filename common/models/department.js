@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Department) {
-
+module.exports = Department => {
+    Department.validatesUniquenessOf('name', {message: 'El nombre del departamento debe ser único.'});
 };

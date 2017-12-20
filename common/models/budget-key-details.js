@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Budgetkeydetails) {
+module.exports = Budgetkeydetails => {
 
 };
