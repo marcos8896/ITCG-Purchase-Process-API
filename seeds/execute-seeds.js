@@ -1,7 +1,15 @@
-const waterfall = require('async').waterfall;
+//Example to run seeds
+//node seeds/execute-seeds.js --model=Provider --numRecords=10
+
+const series = require('async').series;
 const faker = require('faker/locale/es_MX');
 const arrayModels = [];
 const models = require('../server/server').models;
+
+const args = require('yargs').argv;
+const singleModel = args.model;
+const numRecords =  args.numRecords;
+
 
 function getModelsSeedsFromJSONs( cb ) {
   
@@ -22,13 +30,11 @@ function getModelsSeedsFromJSONs( cb ) {
     .catch(err => cb(err));
 }
 
-function seedProvider( cb, model, number ) {
-
+function seedModel( cb ) {
     let Model = arrayModels.find( model => model.name == "Provider")
-    
     let fakeModel = { }
     const fakeModelsArray = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < numRecords; i++) {
       Model.properties_seeds.forEach( prop => 
         fakeModel[Object.keys(prop)[0]] = faker.fake(Object.values(prop)[0])
       )
@@ -36,16 +42,17 @@ function seedProvider( cb, model, number ) {
       fakeModel = { };
     }
 
-    models.Provider.create(fakeModelsArray)
+    models[singleModel].create(fakeModelsArray)
     .then( () => cb(null))
     .catch( err => cb(err))
   
 }
 
-waterfall([
+series([
   cb => getModelsSeedsFromJSONs(cb),
-  (cb, model, numRecords) => seedProvider(cb, model, numRecords)
+  cb => seedModel(cb)
 ], err => {
-  if(err) console.log('Error on waterfall: ', err);
+  if(err) console.log('Error on series: ', err);
   else console.log("Ya acabé, men");
+  process.exit(1);
 });
