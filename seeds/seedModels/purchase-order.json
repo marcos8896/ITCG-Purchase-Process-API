@@ -1,0 +1,9 @@
+{
+  "filename": "purchase-order.json",
+  "name": "Purchase_order",
+  "properties_seeds": [
+    {
+      "date": ""
+    }
+  ]
+}

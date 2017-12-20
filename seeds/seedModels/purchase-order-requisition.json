@@ -1,0 +1,15 @@
+{
+  "filename": "purchase-order-requisition.json",
+  "name": "Purchase_order_Requisition",
+  "properties_seeds": [
+    {
+      "quantity": ""
+    },
+    {
+      "unit": ""
+    },
+    {
+      "description": ""
+    }
+  ]
+}

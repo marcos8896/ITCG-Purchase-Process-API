@@ -1,0 +1,18 @@
+{
+  "filename": "concept-requisition.json",
+  "name": "Concept_Requisition",
+  "properties_seeds": [
+    {
+      "quantity": ""
+    },
+    {
+      "unit": ""
+    },
+    {
+      "description": ""
+    },
+    {
+      "status": ""
+    }
+  ]
+}

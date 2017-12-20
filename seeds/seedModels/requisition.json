@@ -1,0 +1,30 @@
+{
+  "filename": "requisition.json",
+  "name": "Requisition",
+  "properties_seeds": [
+    {
+      "folio": ""
+    },
+    {
+      "date": ""
+    },
+    {
+      "action": ""
+    },
+    {
+      "acceptance_date": ""
+    },
+    {
+      "check_boss": ""
+    },
+    {
+      "check_planning": ""
+    },
+    {
+      "check_subdirection": ""
+    },
+    {
+      "status": ""
+    }
+  ]
+}

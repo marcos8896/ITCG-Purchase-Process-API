@@ -1,0 +1,12 @@
+{
+  "filename": "budget-key-details.json",
+  "name": "Budget_key_details",
+  "properties_seeds": [
+    {
+      "action_number": ""
+    },
+    {
+      "description": ""
+    }
+  ]
+}

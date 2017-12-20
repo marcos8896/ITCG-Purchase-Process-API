@@ -1,0 +1,12 @@
+{
+  "filename": "input-output.json",
+  "name": "Input_output",
+  "properties_seeds": [
+    {
+      "bill": ""
+    },
+    {
+      "date": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "filename": "input-output-details.json",
+  "name": "Input_output_details",
+  "properties_seeds": [
+    {
+      "quantity": ""
+    },
+    {
+      "unit": ""
+    },
+    {
+      "description": ""
+    },
+    {
+      "price": ""
+    }
+  ]
+}

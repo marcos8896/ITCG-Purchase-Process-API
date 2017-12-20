@@ -1,0 +1,18 @@
+{
+  "filename": "provider.json",
+  "name": "Provider",
+  "properties_seeds": [
+    {
+      "name": "{{name.findName}}"
+    },
+    {
+      "phone": "{{phone.phoneNumber}}"
+    },
+    {
+      "address": "{{address.streetAddress}} {{address.city}} {{address.country}}"
+    },
+    {
+      "email": "{{internet.email}}"
+    }
+  ]
+}

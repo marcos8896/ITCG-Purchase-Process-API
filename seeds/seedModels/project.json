@@ -1,0 +1,12 @@
+{
+  "filename": "project.json",
+  "name": "Project",
+  "properties_seeds": [
+    {
+      "project_number": ""
+    },
+    {
+      "description": ""
+    }
+  ]
+}

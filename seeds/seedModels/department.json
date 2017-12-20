@@ -1,0 +1,12 @@
+{
+  "filename": "department.json",
+  "name": "Department",
+  "properties_seeds": [
+    {
+      "name": ""
+    },
+    {
+      "budget": ""
+    }
+  ]
+}
