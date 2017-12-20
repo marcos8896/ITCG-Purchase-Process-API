@@ -32,25 +32,20 @@ function getModelsSeedsFromJSONs( cb ) {
 
 function seedModel( cb ) {
 
-
     let Model = arrayModels.find( model => model.name == singleModel);
-
-    const propertiesValues = Model.properties_seeds.map( property => Object.values(property)[0]);
-    const areAllPropertiesSeedsFilled = propertiesValues.every( property => property );
-    
-    
+ 
     // //Validate if the Model exists
     if( !!!Model ) return cb("Modelo no encontrado.");
     
     // //Validate if numRecords is a valid number
     if(typeof( numRecords ) !== "number") return cb("Número de records no válido.");
-    
+
     //Validate if all the properties_seeds are filled.
-    if( !areAllPropertiesSeedsFilled ) 
+    if( !areAllpropertiesSeedsFilled(Model) ) 
       cb(`Hay 'properties_seeds' vacías en el seedModel '${singleModel}'. \nArchivo: '${Model.filename}'`)
     
     
-      let fakeModel = { }
+    let fakeModel = { }
     const fakeModelsArray = [];
     for (let i = 0; i < numRecords; i++) {
       Model.properties_seeds.forEach( prop => 
@@ -64,6 +59,11 @@ function seedModel( cb ) {
     .then( () => cb(null))
     .catch( err => cb(err))
   
+}
+
+function areAllpropertiesSeedsFilled( Model ) {
+  const propertiesValues = Model.properties_seeds.map( property => Object.values(property)[0]);
+  return propertiesValues.every( property => property );
 }
 
 series([
