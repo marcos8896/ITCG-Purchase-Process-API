@@ -32,7 +32,6 @@ function getModelsSeedsFromJSONs( cb ) {
 
 function seedModel( cb ) {
     let Model = arrayModels.find( model => model.name == singleModel)
-    console.log('Model: ', Model);
 
     //Validate if the Model exists
     if( !!!Model ) return cb("Modelo no encontrado.");
