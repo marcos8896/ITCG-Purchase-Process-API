@@ -90,5 +90,7 @@ asyncSeries([
   cb => checkJSONSeedsAvailability(cb),
   cb => writeRemainingJSONFiles(cb)
 ], (err, results) => {
-  console.log('Error on asyncSeries - prepare-seeds.js: ', err);
+  if(err) console.log('Error on asyncSeries - prepare-seeds.js: ', err);
+  else console.log("\nTodo bien, men.");
+  
 });
