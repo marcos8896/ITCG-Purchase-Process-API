@@ -1,5 +1,5 @@
 //Example to run seeds
-//node seeds/execute-seeds.js --model=Provider --numRecords=10
+// npm run execute:seeds Provider 10
 
 const series = require('async').series;
 const faker = require('faker/locale/es_MX');
@@ -7,8 +7,13 @@ const arrayModels = [];
 const models = require('../server/server').models;
 
 const args = require('yargs').argv;
-const singleModel = args.model;
-const numRecords =  args.numRecords;
+const singleModel = args._[0];
+const numRecords =  args._[1];
+
+console.log("-------------INPUT-------------\n")
+console.log(`Model: '${singleModel}'`);
+console.log(`Number of records: ${numRecords}`);
+console.log("\n-------------------------------")
 
 
 function getModelsSeedsFromJSONs( cb ) {
@@ -35,14 +40,14 @@ function seedModel( cb ) {
     let Model = arrayModels.find( model => model.name == singleModel);
  
     // //Validate if the Model exists
-    if( !!!Model ) return cb("Modelo no encontrado.");
+    if( !!!Model ) return cb("Model not found.");
     
     // //Validate if numRecords is a valid number
-    if(typeof( numRecords ) !== "number") return cb("Número de records no válido.");
+    if( isNaN(numRecords) || numRecords <= 0 ) return cb("The number of records are not valid.");
 
     //Validate if all the properties_seeds are filled.
     if( !areAllpropertiesSeedsFilled(Model) ) 
-      cb(`Hay 'properties_seeds' vacías en el seedModel '${singleModel}'. \nArchivo: '${Model.filename}'`)
+      cb(`There are empty 'properties_seeds' on seedModel '${singleModel}'. \nFile: '${Model.filename}'`)
     
     
     let fakeModel = { }
@@ -71,6 +76,6 @@ series([
   cb => seedModel(cb)
 ], err => {
   if(err) console.log(err);
-  else console.log("Ya acabé, men");
-  process.exit(1);
+  else console.log("\nTodo bien, men.");
+  process.exit(0);
 });

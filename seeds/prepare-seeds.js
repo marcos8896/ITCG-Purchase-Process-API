@@ -52,7 +52,6 @@ function checkJSONSeedsAvailability(cb) {
 
 function writeRemainingJSONFiles(cb) {
   let each = require('async').each;
-  // `./seeds/seedModels/${model.filename}`
   const remainingJSONs = arrayModels.filter(model => !model.fileExists);
 
   //Removed fileExists property to not write it on the JSON Seed files.
@@ -71,7 +70,6 @@ function writeRemainingJSONFiles(cb) {
     })
 
   }, err => {
-    console.log("izi")
     if (err) cb(err);
     else cb(null);
 
@@ -92,16 +90,5 @@ asyncSeries([
   cb => checkJSONSeedsAvailability(cb),
   cb => writeRemainingJSONFiles(cb)
 ], (err, results) => {
-  console.log('asyncSeries: ', err);
+  console.log('Error on asyncSeries - prepare-seeds.js: ', err);
 });
-
-// function seedAll(cb) {
-//   const seedsPromises = [
-//     seedModel("Provider")];
-
-//   Promise.all(seedsPromises).then(() => {
-//     console.log("Ya estufas.");
-//     // process.exit();
-//   });
-// }
-// seedAll();
