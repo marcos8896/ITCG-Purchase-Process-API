@@ -1,8 +1,7 @@
 # Seed Generator based on Faker.js
 
 This little tool is meant to be used as a generator for fake data based on the models from a Loopback 3.x project. It generates the fake records using the library faker.js and its mustache feature. See [mustache syntax](https://github.com/marak/Faker.js/#fakerfake)
-
-
+___
 ### Common usage
 
 ```sh
@@ -14,6 +13,10 @@ This little tool is meant to be used as a generator for fake data based on the m
 3.- $ npm run execute:seeds <Model> <Records>    
       //This will generate fake data on the database based on the given model and the given number of records.
 ```
+
+###### NOTE: The unique Loopback validation may cause errors sometimes by running the "execute:seeds" command, because of rarely, Faker repeats some strings on its fake data.
+###### NOTE 1: It is not recommended to use a huge number of records by running the "execute:seeds" command, because it may block or break your application.
+___
 
 ### Commands to use this tool.
 
@@ -46,4 +49,4 @@ This little tool is meant to be used as a generator for fake data based on the m
 
 ```
 
-NOTE: You can check the Faker.js documentation for the mustache syntax on this [link](https://github.com/marak/Faker.js/#fakerfake)
+###### NOTE: You can check the Faker.js documentation for the mustache syntax on this [link](https://github.com/marak/Faker.js/#fakerfake)
