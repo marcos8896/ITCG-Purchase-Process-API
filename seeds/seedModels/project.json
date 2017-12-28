@@ -3,10 +3,10 @@
   "name": "Project",
   "properties_seeds": [
     {
-      "project_number": ""
+      "project_number": "{{random.number}}"
     },
     {
-      "description": ""
+      "description": "{{random.words}}"
     }
   ]
 }
