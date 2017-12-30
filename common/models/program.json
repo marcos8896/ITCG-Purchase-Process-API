@@ -21,6 +21,11 @@
       "type": "hasMany",
       "model": "Budget_key",
       "foreignKey": "programId"
+    },
+    "project": {
+      "type": "hasMany",
+      "model": "project",
+      "foreignKey": "programId"
     }
   },
   "acls": [],
