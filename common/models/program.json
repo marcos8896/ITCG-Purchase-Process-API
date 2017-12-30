@@ -24,7 +24,7 @@
     },
     "project": {
       "type": "hasMany",
-      "model": "project",
+      "model": "Project",
       "foreignKey": "programId"
     }
   },
