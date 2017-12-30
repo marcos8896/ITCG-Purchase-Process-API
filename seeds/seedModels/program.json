@@ -3,10 +3,10 @@
   "name": "Program",
   "properties_seeds": [
     {
-      "program_number": ""
+      "program_number": "{{ramdom.number}}"
     },
     {
-      "description": ""
+      "description": "{{random.words}}"
     }
   ]
 }
