@@ -1,5 +1,10 @@
 'use strict';
 
 module.exports = Department => {
-    Department.validatesUniquenessOf('name', {message: 'El nombre del departamento debe ser único.'});
+
+  //Validations.
+  Department.validatesUniquenessOf('name', { message: 'El nombre del departamento debe ser único.' });
+
+  //Disable build-in methods.
+  Department.disableRemoteMethodByName("deleteById", true);
 };
