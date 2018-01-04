@@ -1,5 +1,8 @@
 'use strict';
 
-module.exports = function(Conceptrequisition) {
+module.exports = Conceptrequisition => {
 
+  //Disable build-in methods.
+  Conceptrequisition.disableRemoteMethodByName("deleteById", true);
+  
 };

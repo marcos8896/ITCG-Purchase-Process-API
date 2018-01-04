@@ -3,7 +3,7 @@
   "name": "Concept",
   "properties_seeds": [
     {
-      "description": ""
+      "description": "{{lorem.text}}"
     }
   ]
 }

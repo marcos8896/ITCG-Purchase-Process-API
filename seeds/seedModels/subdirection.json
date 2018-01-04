@@ -3,10 +3,10 @@
   "name": "Subdirection",
   "properties_seeds": [
     {
-      "name": ""
+      "name": "{{name.jobArea}} {{name.jobArea}}"
     },
     {
-      "boss_name": ""
+      "boss_name": "{{name.suffix}} {{name.findName}} {{name.lastName}}"
     }
   ]
 }

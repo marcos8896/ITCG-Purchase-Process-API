@@ -1,5 +1,9 @@
 'use strict';
 
-module.exports = function(Purchaseorder) {
+module.exports = Purchaseorder => {
 
+  //Validations.
+
+  //Disable build-in methods.
+  Purchaseorder.disableRemoteMethodByName("deleteById", true);
 };

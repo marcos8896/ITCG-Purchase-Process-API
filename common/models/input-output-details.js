@@ -1,5 +1,10 @@
 'use strict';
 
-module.exports = function(Inputoutputdetails) {
+module.exports = Inputoutputdetails => {
 
+  //Validations.
+
+
+  //Disable build-in methods.
+  Inputoutputdetails.disableRemoteMethodByName("deleteById", true);
 };
