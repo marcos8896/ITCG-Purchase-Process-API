@@ -7,8 +7,8 @@
   },
   "properties": {
     "folio": {
-      "type": "string",
-      "required": true
+      "type": "number",
+      "required": false
     },
     "date": {
       "type": "date",
