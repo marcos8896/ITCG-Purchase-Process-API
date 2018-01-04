@@ -22,6 +22,11 @@
       "model": "Project",
       "foreignKey": ""
     },
+    "program": {
+      "type": "belongsTo",
+      "model": "Program",
+      "foreignKey": ""
+    },
     "budget_key_details": {
       "type": "hasMany",
       "model": "Budget_key_details",
