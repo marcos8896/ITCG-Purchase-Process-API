@@ -5,7 +5,7 @@ var lbTables = ['User', 'AccessToken', 'ACL', 'RoleMapping', 'Role',
                'Concept_Requisition',  'Input_output', 
                'Input_output_details', 'Provider', 'Purchase_order', 
                'Purchase_order_Requisition', 'Requisition', 'Project', 'Program',
-               'Budget_key', 'Budget_key_details'
+               'Budget_key', 'Budget_key_details', 'Boss_department', 'Vice_principal'
               ];
               
 ds.automigrate(lbTables, function(er) {
