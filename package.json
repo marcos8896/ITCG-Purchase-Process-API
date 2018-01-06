@@ -12,24 +12,25 @@
     "create-tables": "node server/create-lb-tables",
     "prepare:seeds": "node seeds/prepare-seeds",
     "execute:seeds": "node seeds/execute-seeds --",
-    "migrate": "node server/create-lb-tables && node seeds/prepare-seeds"
+    "migrate": "node server/create-lb-tables && node seeds/prepare-seeds",
+    "create-users": "node server/create-users"
   },
   "dependencies": {
     "async": "^2.6.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "dotenv": "^4.0.0",
-    "file-exists": "^5.0.0",
+    "file-exists": "^5.0.1",
     "helmet": "^1.3.0",
     "jsonfile": "^4.0.0",
-    "loopback": "^3.0.0",
+    "loopback": "^3.17.1",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^5.0.0",
     "loopback-connector-postgresql": "^3.2.0",
     "node-readfiles": "^0.2.0",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.0.0",
-    "yargs": "^10.0.3"
+    "yargs": "^10.1.0"
   },
   "devDependencies": {
     "eslint": "^3.17.1",
