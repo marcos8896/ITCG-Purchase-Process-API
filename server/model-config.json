@@ -90,5 +90,13 @@
   "Budget_key_details": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Boss_department": {
+    "dataSource": "posgresql_ds",
+    "public": true
+  },
+  "Vice_principal": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
