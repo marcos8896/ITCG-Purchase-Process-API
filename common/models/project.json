@@ -24,7 +24,7 @@
     },
     "program": {
       "type": "belongsTo",
-      "model": "program",
+      "model": "Program",
       "foreignKey": ""
     }
   },
