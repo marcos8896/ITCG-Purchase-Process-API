@@ -13,7 +13,7 @@
     "prepare:seeds": "node seeds/prepare-seeds",
     "execute:seeds": "node seeds/execute-seeds --",
     "migrate": "node server/create-lb-tables && node seeds/prepare-seeds",
-    "create-users": "node server/create-users"
+    "create-roles-users": "node roles/create-roles-users"
   },
   "dependencies": {
     "async": "^2.6.0",
