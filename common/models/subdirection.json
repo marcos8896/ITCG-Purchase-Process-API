@@ -9,10 +9,6 @@
     "name": {
       "type": "string",
       "required": true
-    },
-    "boss_name": {
-      "type": "string",
-      "required": true
     }
   },
   "validations": [],
