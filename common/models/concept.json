@@ -9,6 +9,10 @@
     "description": {
       "type": "string",
       "required": true
+    },
+    "concept_number": {
+      "type": "number",
+      "required": true
     }
   },
   "validations": [],
