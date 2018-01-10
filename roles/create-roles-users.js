@@ -1,5 +1,5 @@
 const   app = require('../server/server'),
-        { waterfall, each } = require('async'),
+        { parallel, each } = require('async'),
         Role = app.models.Role,
         RoleMapping = app.models.RoleMapping,
         bosses = require('./users/boss'),
@@ -44,16 +44,16 @@ const createRole = (model, collection, newRole, roleDescription, cb) => {
 }
 
 // Execute createRole() function
-waterfall([
-    cb => {
+parallel({
+    boss: cb => {
         createRole( BossDepartment, bosses.users, bosses.roleName, bosses.rolDescription, (error, result) =>
-            error ? cb( error ) : cb ( null, result ))    
+            error ? cb( error ) : cb ( null, result ))
     },
-    (result, cb) => {
+    vicePrincipal: cb => {
         createRole( VicePrincipal, vicePrincipals.users, vicePrincipals.roleName, vicePrincipals.rolDescription, (error, result) =>
             error ? cb( error ) : cb ( null, result ))
     }
-],
+},
 (error, result) => {
     if ( error ) throw error;
     console.log('Script succesfully finshed :D')
