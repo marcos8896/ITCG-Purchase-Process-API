@@ -17,7 +17,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "subdirection": {
+      "type": "hasOne",
+      "model": "Subdirection",
+      "foreignKey": "vice_principalId"
+    }
+  },
   "acls": [],
   "methods": {}
 }
