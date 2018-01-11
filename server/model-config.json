@@ -98,5 +98,9 @@
   "Vice_principal": {
     "dataSource": "posgresql_ds",
     "public": true
+  },
+  "Planning": {
+    "dataSource": "posgresql_ds",
+    "public": true
   }
 }
