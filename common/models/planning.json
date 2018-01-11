@@ -18,6 +18,28 @@
   },
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [
+    {
+      "property": "*",
+      "accessType": "*",      
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "addBoss"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "addVicePrincipal"
+    }
+  ],
   "methods": {}
 }
