@@ -4,8 +4,10 @@ const   app = require('../server/server'),
         RoleMapping = app.models.RoleMapping,
         bosses = require('./users/boss'),
         vicePrincipals = require('./users/vice-principal'),
+        planningUsers = require('./users/planning'),
         BossDepartment = app.models[bosses.model],
         VicePrincipal = app.models[vicePrincipals.model];
+        Planning = app.models[planningUsers.model];
 /**
  * 
  * Main method for creating a new collection of registers  to
@@ -45,6 +47,10 @@ const createRole = (model, collection, newRole, roleDescription, cb) => {
 
 // Execute createRole() function
 parallel({
+    planning: cb => {
+        createRole( Planning, planningUsers.users, planningUsers.roleName, planningUsers.rolDescription, (error, result) =>
+            error ? cb( error ) : cb ( null, result ))
+    },
     boss: cb => {
         createRole( BossDepartment, bosses.users, bosses.roleName, bosses.rolDescription, (error, result) =>
             error ? cb( error ) : cb ( null, result ))
