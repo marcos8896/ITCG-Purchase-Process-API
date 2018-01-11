@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 module.exports = {
     model: 'Vice_principal',
-    roleName: 'viceprincipal',
+    roleName: process.env.ROL_VICE_PRINCIPAL,
     rolDescription: 'Subdirector',
     users: [{ 
         id: 3,

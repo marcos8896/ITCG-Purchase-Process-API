@@ -1,6 +1,6 @@
 module.exports = {
     model: 'Boss_department',
-    roleName: 'bossdepartment',
+    roleName: process.env.ROL_BOSS_DEPARTMENT,
     rolDescription: 'Jefe de departamento',
     users: [{ 
         id: 1,

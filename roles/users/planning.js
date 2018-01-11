@@ -2,7 +2,7 @@ const uuid = require('uuid/v1');
 
 module.exports = {
     model: 'Planning',
-    roleName: 'planningdepartment',
+    roleName: process.env.ROL_PLANNING,
     rolDescription: 'Planeación',
     users: [{ 
         id: uuid(),
