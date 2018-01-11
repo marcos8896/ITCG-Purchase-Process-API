@@ -12,7 +12,7 @@ module.exports = Bossdepartment => {
      * application will know which type of user is loggin in
      */
     Bossdepartment.afterRemote('login', (ctx, user, next) => {
-        user.type = process.env.BOSS_DEPARTMENT;
+        user.type = process.env.ROL_BOSS_DEPARTMENT;
         next();
     })
 

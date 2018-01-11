@@ -11,7 +11,7 @@ module.exports = Viceprincipal => {
      * application will know which type of user is loggin in
      */
     Viceprincipal.afterRemote('login', (ctx, user, next) => {
-        user.type = process.env.VICE_PRINCIPAL;
+        user.type = process.env.ROL_VICE_PRINCIPAL;
         next();
     })
 
