@@ -18,29 +18,6 @@ module.exports = Bossdepartment => {
 
     /**
      * Remote hook description:
-     * After create a new register, the just created register will be added
-     * to bossdepartment role
-     */
-    Bossdepartment.afterRemote('create', (ctx, modelInstance, next) => {
-        const Role = app.models.Role;
-        const RoleMapping = app.models.RoleMapping;
-        Role.findOne({ where: { name: 'bossdepartment' } }, (err, role) => {
-            if ( err ) next( err );
-            if ( role ) {
-                role.principals.create({
-                    principalType: RoleMapping.USER,
-                    principalId: modelInstance.id
-                }, (err, principal) => {
-                    if ( err ) next ( err );
-                    console.log('Principal created: ', principal);
-                    next();
-                })
-            } else console.log(`There's no role matched`)
-        })
-    });
-
-    /**
-     * Remote hook description:
      * Before create a new register, a unique id (built with uuid library)
      * will be added to that request. This with the reason of avoid same 
      * ids between Bossdepartment and Vice_principal models 
