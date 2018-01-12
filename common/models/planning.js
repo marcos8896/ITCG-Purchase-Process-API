@@ -10,7 +10,7 @@ module.exports = Planning => {
      */
     Planning.addBoss = (boss_departmentId, cb) => {
         const BossDepartment = app.models.Boss_department;
-        addUserToRol( BossDepartment, boss_departmentId, 'bossdepartment')
+        addUserToRol( BossDepartment, boss_departmentId, 'bossdepartment' )
             .then( principal => cb( null, principal ))
             .catch( error => cb( error ))
     }
@@ -54,7 +54,7 @@ module.exports = Planning => {
      * @param {string} rolName name of the role 
      * @param {string} id id that will be added to the rolName
      */
-    function addRole(rolName, id) {
+    function addRole( rolName, id ) {
         const Role = app.models.Role;
         const RoleMapping = app.models.RoleMapping;
         return new Promise( (resolve, reject) => {
@@ -71,7 +71,7 @@ module.exports = Planning => {
     }
 
     /**
-     * The whole process to add a user to a rol
+     * The whole process to add a user to a rol.
      * 
      * @param {Object} Model Model from Loopback responsible for add the new register
      * @param {string} id id of the register that will be added in a new rol
@@ -85,7 +85,6 @@ module.exports = Planning => {
                 // the id, passed by params
                 next => {
                     Model.findById( id, (err, register) => {
-                        console.log(register)
                         if ( err ) return next( err ); // An error have ocurred
                         if ( register ) return next(); // There IS a register with such id
                         // There IS NOT a register with such id
