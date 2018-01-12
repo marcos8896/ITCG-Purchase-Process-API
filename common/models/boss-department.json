@@ -12,8 +12,8 @@
     },
     "id": {
       "type": "string",
-      "required": true,
-      "id": true
+      "id": true,
+      "required": true
     }
   },
   "validations": [],
@@ -34,6 +34,13 @@
       "foreignKey": "boss_departmentId"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

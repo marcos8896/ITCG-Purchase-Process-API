@@ -20,11 +20,11 @@
   "relations": {},
   "acls": [
     {
-      "property": "*",
-      "accessType": "*",      
+      "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "DENY",
+      "property": "*"
     },
     {
       "accessType": "EXECUTE",
@@ -39,6 +39,12 @@
       "principalId": "planningdepartment",
       "permission": "ALLOW",
       "property": "addVicePrincipal"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     }
   ],
   "methods": {}
