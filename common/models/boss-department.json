@@ -22,6 +22,16 @@
       "type": "hasOne",
       "model": "Department",
       "foreignKey": "boss_departmentId"
+    },
+    "requisition": {
+      "type": "hasMany",
+      "model": "Requisition",
+      "foreignKey": "boss_departmentId"
+    },
+    "Purchase_order_Requisition": {
+      "type": "hasMany",
+      "model": "Purchase_order_Requisition",
+      "foreignKey": "boss_departmentId"
     }
   },
   "acls": [],

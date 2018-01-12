@@ -21,16 +21,6 @@
       "type": "belongsTo",
       "model": "Subdirection",
       "foreignKey": ""
-    },
-    "requisition": {
-      "type": "hasMany",
-      "model": "Requisition",
-      "foreignKey": "departmentId"
-    },
-    "Purchase_order_Requisition": {
-      "type": "hasMany",
-      "model": "Purchase_order_Requisition",
-      "foreignKey": "departmentId"
     }
   },
   "acls": [],

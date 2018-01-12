@@ -41,9 +41,9 @@
   },
   "validations": [],
   "relations": {
-    "department": {
+    "boss_department": {
       "type": "belongsTo",
-      "model": "Department",
+      "model": "Boss_department",
       "foreignKey": ""
     },
     "provider": {
