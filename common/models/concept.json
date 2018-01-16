@@ -35,6 +35,9 @@
       "principalId": "$everyone",
       "permission": "DENY"
     },
+
+
+
     {
       "accessType": "WRITE",
       "principalType": "ROLE",
