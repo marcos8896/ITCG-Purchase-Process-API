@@ -39,12 +39,6 @@
       "principalId": "planningdepartment",
       "permission": "ALLOW",
       "property": "addVicePrincipal"
-    },
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
     }
   ],
   "methods": {}
