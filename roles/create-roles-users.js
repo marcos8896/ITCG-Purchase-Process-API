@@ -63,4 +63,5 @@ parallel({
 (error, result) => {
     if ( error ) throw error;
     console.log('Script succesfully finshed :D')
+    process.exit(0);
 })

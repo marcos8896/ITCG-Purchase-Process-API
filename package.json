@@ -13,7 +13,8 @@
     "prepare:seeds": "node seeds/prepare-seeds",
     "execute:seeds": "node seeds/execute-seeds --",
     "migrate": "node server/create-lb-tables && node seeds/prepare-seeds",
-    "create-roles-users": "node roles/create-roles-users"
+    "create-roles-users": "node roles/create-roles-users",
+    "quick-setup": "npm run create-tables && npm run create-roles-users && nodemon"
   },
   "dependencies": {
     "async": "^2.6.0",
