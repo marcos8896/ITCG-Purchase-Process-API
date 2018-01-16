@@ -28,8 +28,6 @@
       "foreignKey": "programId"
     }
   },
-  "acls": [
-    
-  ],
+  "acls": [],
   "methods": {}
 }

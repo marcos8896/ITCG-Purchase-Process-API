@@ -24,8 +24,6 @@
       "foreignKey": "subdirectionId"
     }
   },
-  "acls": [
-    
-  ],
+  "acls": [],
   "methods": {}
 }

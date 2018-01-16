@@ -24,8 +24,6 @@
       "foreignKey": "purchase_orderId"
     }
   },
-  "acls": [
-    
-  ],
+  "acls": [],
   "methods": {}
 }

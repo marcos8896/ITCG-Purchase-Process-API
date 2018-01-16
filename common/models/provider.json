@@ -38,8 +38,6 @@
       "foreignKey": "providerId"
     }
   },
-  "acls": [
-    
-  ],
+  "acls": [],
   "methods": {}
 }

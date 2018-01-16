@@ -24,8 +24,6 @@
       "foreignKey": "vice_principalId"
     }
   },
-  "acls": [
-    
-  ],
+  "acls": [],
   "methods": {}
 }
