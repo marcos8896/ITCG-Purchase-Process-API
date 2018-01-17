@@ -2,6 +2,17 @@
 const app = require('../../server/server');
 const { waterfall } = require('async');
 module.exports = Planning => {
+
+    /**
+     * Remote hook description:
+     * 'type' property will be added to the instance (user) that will be 
+     * returned in the login request. With 'type' property, the client
+     * application will know which type of user is loggin in
+     */
+    Planning.afterRemote('login', (ctx, user, next) => {
+        user.type = process.env.ROL_PLANNING;
+        next();
+    })
     /**
      * Add a Boss_department register to a role by its id
      * 
