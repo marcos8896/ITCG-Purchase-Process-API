@@ -11,12 +11,13 @@
     "start": "npm run production-setup",
     "posttest": "npm run lint && nsp check",
     "create-tables": "node server/create-lb-tables",
+    "update-tables": "node server/update-lb-tables",
     "prepare:seeds": "node seeds/prepare-seeds",
     "execute:seeds": "node seeds/execute-seeds --",
     "migrate": "node server/create-lb-tables && node seeds/prepare-seeds",
     "create-roles-users": "node roles/create-roles-users",
     "dev-setup": "npm run create-tables && npm run create-roles-users && nodemon",
-    "production-setup": "npm run create-tables && npm run create-roles-users && node . web: node --optimize_for_size --max_old_space_size=920 --gc_interval=100"
+    "production-setup": "npm run update-tables && npm run create-roles-users && node . web: node --optimize_for_size --max_old_space_size=920 --gc_interval=100"
   },
   "dependencies": {
     "async": "^2.6.0",
