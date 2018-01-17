@@ -18,6 +18,10 @@ DB_NAME=
 | DB_HOST | Host where the main database is | DB_HOST=127.0.0.1 |
 | DB_PORT | Port where the main database is listening to | DB_PORT=5432 |
 | DB_NAME | Main database's name | DB_NAME=mydb |
+| ROL_PLANNING | Plannings' role | ROL_PLANNING=myplanningrole |
+| ROL_VICE_PRINCIPAL | Viceprincipal's role | ROL_VICE_PRINCIPAL=miviceprincipalrole |
+| ROL_BOSS_DEPARTMENT | Boss deparment's role | ROL_BOSS_DEPARTMENT=mibossdeparmentrole |
+| NODE_ENV | Environment | NODE_ENV=development |
 
 ###### NOTE: The DBMS used on this project is PostgreSQL
 ___
