@@ -21,6 +21,10 @@ DB_NAME=
 | ROL_PLANNING | Plannings' role | ROL_PLANNING=myplanningrole |
 | ROL_VICE_PRINCIPAL | Viceprincipal's role | ROL_VICE_PRINCIPAL=miviceprincipalrole |
 | ROL_BOSS_DEPARTMENT | Boss deparment's role | ROL_BOSS_DEPARTMENT=mibossdeparmentrole |
+| PLANNING_NAME | - | - |
+| PLANNING_USERNAME | - | - |
+| PLANNING_EMAIL | - | - |
+| PLANNING_PASSWORD | - | - |
 | NODE_ENV | Environment | NODE_ENV=development |
 
 ###### NOTE: The DBMS used on this project is PostgreSQL
