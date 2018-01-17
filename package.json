@@ -1,20 +1,22 @@
 {
-  "name": "ITCG-Purchase-Process-API",
+  "name": "itcg-purchase-process-api",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
-    "node": ">=4"
+    "node": "~8.9.1",
+    "npm": "~5.5.1"
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node .",
+    "start": "npm run production-setup",
     "posttest": "npm run lint && nsp check",
     "create-tables": "node server/create-lb-tables",
     "prepare:seeds": "node seeds/prepare-seeds",
     "execute:seeds": "node seeds/execute-seeds --",
     "migrate": "node server/create-lb-tables && node seeds/prepare-seeds",
     "create-roles-users": "node roles/create-roles-users",
-    "quick-setup": "npm run create-tables && npm run create-roles-users && nodemon"
+    "dev-setup": "npm run create-tables && npm run create-roles-users && nodemon",
+    "production-setup": "npm run create-tables && npm run create-roles-users && node . web: node --optimize_for_size --max_old_space_size=920 --gc_interval=100"
   },
   "dependencies": {
     "async": "^2.6.0",
