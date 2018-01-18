@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node . --optimize_for_size --max_old_space_size=920 --gc_interval=100",
+    "start": "node . web: node --optimize_for_size --max_old_space_size=920 --gc_interval=100",
     "posttest": "npm run lint && nsp check",
     "create-tables": "node server/create-lb-tables",
     "update-tables": "node server/update-lb-tables",
