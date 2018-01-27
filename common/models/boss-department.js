@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = Bossdepartment => {
-    const app = require('../../server/server');
-    const uuidv1 = require('uuid/v1');
     require('dotenv').config();
-
+    const   app = require('../../server/server'),
+            uuidv1 = require('uuid/v1');
+    
     /**
      * Remote hook description:
      * 'type' property will be added to the instance (user) that will be 
