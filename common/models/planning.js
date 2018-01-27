@@ -2,7 +2,7 @@
 const app = require('../../server/server');
 const { waterfall } = require('async');
 module.exports = Planning => {
-
+    
     /**
      * Remote hook description:
      * 'type' property will be added to the instance (user) that will be 
@@ -115,6 +115,11 @@ module.exports = Planning => {
                     addRole(rolName, id)
                         .then( principal => next( null, principal ))
                         .catch( error => next( error ))
+                },
+                // Change hasRole = true
+                (principal, next) =>  {
+                    Model.updateAll({ id }, { hasRole: true }, (err, info) =>
+                        err ? next(err) : next(null, principal));
                 }
             ],
             (err, principal) => err ? reject( err ) : resolve( principal ))
