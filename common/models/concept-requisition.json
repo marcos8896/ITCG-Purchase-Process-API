@@ -19,8 +19,8 @@
       "required": true
     },
     "status": {
-      "type": "string",
-      "required": true
+      "type": "string",      
+      "default": "Pedido"
     }
   },
   "validations": [],
