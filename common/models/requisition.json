@@ -20,7 +20,7 @@
     },
     "acceptance_date": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "check_boss": {
       "type": "boolean",
