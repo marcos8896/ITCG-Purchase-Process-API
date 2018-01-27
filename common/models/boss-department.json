@@ -14,6 +14,11 @@
       "type": "string",
       "id": true,
       "required": true
+    },
+    "hasRole": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   },
   "validations": [],
@@ -54,6 +59,20 @@
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "__get__requisition"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "findById"
     }
   ],
   "methods": {}
