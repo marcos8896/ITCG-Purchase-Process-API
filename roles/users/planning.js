@@ -6,9 +6,9 @@ module.exports = {
     rolDescription: 'Planeación',
     users: [{ 
         id: uuid(),
-        name: 'Jefe de planeacion',
-        username: 'planeacion',
-        email: 'planeacion@gmail.com',
-        password: '123qwe'
+        name: process.env.PLANNING_NAME,
+        username: process.env.PLANNING_USERNAME,
+        email: process.env.PLANNING_EMAIL,
+        password: process.env.PLANNING_PASSWORD
     }]
 }

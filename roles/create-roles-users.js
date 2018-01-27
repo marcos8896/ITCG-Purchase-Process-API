@@ -8,6 +8,8 @@ const   app = require('../server/server'),
         BossDepartment = app.models[bosses.model],
         VicePrincipal = app.models[vicePrincipals.model];
         Planning = app.models[planningUsers.model];
+
+
 /**
  * 
  * Main method for creating a new collection of registers  to
@@ -52,12 +54,20 @@ parallel({
             error ? cb( error ) : cb ( null, result ))
     },
     boss: cb => {
-        createRole( BossDepartment, bosses.users, bosses.roleName, bosses.rolDescription, (error, result) =>
+        if( process.env.NODE_ENV !== 'production' ) {
+          createRole( BossDepartment, bosses.users, bosses.roleName, bosses.rolDescription, (error, result) =>
             error ? cb( error ) : cb ( null, result ))
+        } else {
+          cb( null, "On production" )
+        }
     },
     vicePrincipal: cb => {
+      if( process.env.NODE_ENV !== 'production' ) {
         createRole( VicePrincipal, vicePrincipals.users, vicePrincipals.roleName, vicePrincipals.rolDescription, (error, result) =>
             error ? cb( error ) : cb ( null, result ))
+      } else {
+        cb( null, "On production" )
+      }
     }
 },
 (error, result) => {
