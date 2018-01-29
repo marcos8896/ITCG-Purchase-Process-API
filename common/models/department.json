@@ -21,7 +21,13 @@
       "type": "belongsTo",
       "model": "Subdirection",
       "foreignKey": ""
+    },
+    "boss_department": {
+      "type": "belongsTo",
+      "model": "Boss_department",
+      "foreignKey": ""
     }
+    
   },
   "acls": [
     {
