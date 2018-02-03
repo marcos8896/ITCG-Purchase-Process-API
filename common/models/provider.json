@@ -89,6 +89,20 @@
       "principalId": "planningdepartment",
       "permission": "ALLOW",
       "property": "count"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "bossdepartment",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "bossdepartment",
+      "permission": "ALLOW",
+      "property": "findById"
     }
   ],
   "methods": {}

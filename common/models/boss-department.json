@@ -71,6 +71,13 @@
       "property": "find"
     },
     {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "bossdepartment",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
       "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "planningdepartment",
