@@ -1,6 +1,7 @@
-const { waterfall } = require('async');
-const app = require('../../server/server');
-const uuidv1 = require('uuid/v1');
+const   app = require('../../server/server'),
+        uuidv1 = require('uuid/v1'),
+        { waterfall } = require('async');
+
 /**
  * Remote hook description:
  * Before create a new register, a unique id (built with uuid library)
@@ -11,6 +12,7 @@ function beforeRemoteCreate(ctx, unused, next) {
     ctx.req.body.id = uuidv1();
     next();
 }
+
 /**
  * Remote hook description:
  * 'type' property will be added to the instance (user) that will be 
@@ -18,8 +20,8 @@ function beforeRemoteCreate(ctx, unused, next) {
  * application will know which type of user is loggin in
  */
 function afterRemoteLogin(ctx, user, next) {
+    const RoleMapping = app.models.RoleMapping;
     user.type = process.env.ROL_PLANNING;
-    console.log(user)
     next();
 } 
 
@@ -72,6 +74,40 @@ function addRole( rolName, id ) {
 }
 
 /**
+ * Method to handle endpoint DELETE Planning/removeBoss/{boss_departmentId}
+ * 
+ * @param {string} id id from Boss_department to be removed from its role
+ * @param {function} next Callback
+ */
+function removeBoss( id, next ) {
+    const RoleMapping = app.models.RoleMapping;
+    const BossDepartment = app.models.Boss_department;
+    
+    RoleMapping.findOne({ where: { principalId: id }})
+        .then( principal => RoleMapping.destroyById( principal.id ))
+        .then( data => BossDepartment.updateAll({ id },{'hasRole': false}))
+        .then( data => next(null, data))
+        .catch( err => err ? next(err) : next())
+}
+
+/**
+ * Method to handle endpoint DELETE Planning/removeVicePrincipal/{vice_principalId}
+ * 
+ * @param {string} id id from Vice_principal to be removed from its role
+ * @param {function} next Callback
+ */
+function removeVicePrincipal( id ) {
+    const RoleMapping = app.models.RoleMapping;
+    const VicePrincipal = app.models.Vice_principal;
+    
+    RoleMapping.findOne({ where: { principalId: id }})
+        .then( principal => RoleMapping.destroyById( principal.id ))
+        .then( data => VicePrincipal.updateAll({ id },{'hasRole': false}))
+        .then( data => next(null, data))
+        .catch( err => err ? next(err) : next())
+}
+
+/**
  * The whole process to add a user to a rol.
  * 
  * @param {Object} Model Model from Loopback responsible for add the new register
@@ -92,7 +128,7 @@ function addUserToRol( Model, id, rolName) {
                     return next(`No existe un registro con el id: ${id}`);
                 })
             },
-            // Verify if id hasn't been added before as a principal
+            // Verify if it hasn't been added before as a principal
             next => {
                 RoleMapping.findOne({ where: { principalId: id }}, (err, role) => {
                     if ( err ) return next( err );
@@ -107,7 +143,7 @@ function addUserToRol( Model, id, rolName) {
                     .catch( error => next( error ))
             },
             // Change hasRole = true
-            (principal, next) =>  {
+            (principal, next) => {
                 Model.updateAll({ id }, { hasRole: true }, (err, info) =>
                     err ? next(err) : next(null, principal));
             }
@@ -121,5 +157,7 @@ module.exports = {
     beforeRemoteCreate,
     afterRemoteLogin,
     addBoss,
-    addVicePrincipal
+    addVicePrincipal,
+    removeBoss,
+    removeVicePrincipal
 }
