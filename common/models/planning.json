@@ -39,6 +39,20 @@
       "principalId": "planningdepartment",
       "permission": "ALLOW",
       "property": "addVicePrincipal"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "removeBoss"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "removeVicePrincipal"
     }
   ],
   "methods": {}
