@@ -1,9 +1,6 @@
 'use strict';
 const planningService = require('./planning.service');
 module.exports = Planning => {
-    // Create a method for removeBoss and removeVicePrincipal
-    // To revoke permissions and remove the role
-
     /**
      * Remote hook description:
      * Before create a new register, a unique id (built with uuid library)
@@ -52,6 +49,44 @@ module.exports = Planning => {
      */
     Planning.remoteMethod('addVicePrincipal', {
         http: { path: '/addVicePrincipal/:vice_principalId', verb: 'post'},
+        accepts: { arg: 'vice_principalId', type: 'string' },
+        returns:[
+            { arg: 'result', type: 'object' },
+        ]
+    })
+
+    /**
+     * Method to handle endpoint DELETE Planning/removeBoss/{boss_departmentId}
+     * 
+     * @param {string} id id from Boss_department to be removed from its role
+     * @param {function} next Callback
+     */
+    Planning.removeBoss = planningService.removeBoss
+
+    /**
+     * Remote method for removeBoss
+     */
+    Planning.remoteMethod('removeBoss', {
+        http: { path: '/removeBoss/:boss_departmentId', verb: 'delete'},
+        accepts: { arg: 'boss_departmentId', type: 'string' },
+        returns:[
+            { arg: 'result', type: 'object' },
+        ]
+    })
+
+    /**
+     * Method to handle endpoint DELETE Planning/removeVicePrincipal/{vice_principalId}
+     * 
+     * @param {string} id id from Vice_principal to be removed from its role
+     * @param {function} next Callback
+     */
+    Planning.removeVicePrincipal = planningService.removeVicePrincipal
+    
+    /**
+     * Remote method for removeVicePrincipal
+     */
+    Planning.remoteMethod('removeVicePrincipal', {
+        http: { path: '/removeVicePrincipal/:vice_principalId', verb: 'delete'},
         accepts: { arg: 'vice_principalId', type: 'string' },
         returns:[
             { arg: 'result', type: 'object' },
