@@ -60,14 +60,7 @@
       "principalType": "ROLE",
       "principalId": "planningdepartment",
       "permission": "ALLOW",
-      "property": "upsert"
-    },
-    {
-      "accessType": "WRITE",
-      "principalType": "ROLE",
-      "principalId": "planningdepartment",
-      "permission": "ALLOW",
-      "property": "updateAttributes"
+      "property": "replaceById"
     },
     {
       "accessType": "READ",
@@ -96,6 +89,20 @@
       "principalId": "planningdepartment",
       "permission": "ALLOW",
       "property": "count"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "bossdepartment",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "bossdepartment",
+      "permission": "ALLOW",
+      "property": "findById"
     }
   ],
   "methods": {}
