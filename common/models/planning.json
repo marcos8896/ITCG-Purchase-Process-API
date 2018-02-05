@@ -14,6 +14,10 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "type": {
+      "type": "string",
+      "default": "planningdepartment"
     }
   },
   "validations": [],

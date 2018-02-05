@@ -19,6 +19,10 @@
       "type": "boolean",
       "default": false,
       "required": false
+    },
+    "type": {
+      "type": "string",
+      "default": "viceprincipal"
     }
   },
   "validations": [],
