@@ -23,20 +23,20 @@
       "required": false
     },
     "check_boss": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": "Aceptado"
     },
     "check_planning": {
-      "type": "boolean",
-      "default": false
+      "type": "string",      
+      "default": "Esperando"
     },
     "check_subdirection": {
-      "type": "boolean",
-      "default": false
+      "type": "string",
+      "default": "Esperando"
     },
     "status": {
       "type": "string",
-      "required": true
+      "default": "Esperando"
     }
   },
   "validations": [],
@@ -92,11 +92,32 @@
       "property": "create"
     },
     {
-      "accessType": "EXECUTE",
+      "accessType": "READ",
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "findById"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__get__boss_department"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__get__provider"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__get__concept_requisition"
     }
   ],
   "methods": {}
