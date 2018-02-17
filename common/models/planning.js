@@ -81,7 +81,7 @@ module.exports = Planning => {
      * @param {function} next Callback
      */
     Planning.removeVicePrincipal = planningService.removeVicePrincipal
-    
+
     /**
      * Remote method for removeVicePrincipal
      */

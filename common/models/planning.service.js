@@ -96,7 +96,7 @@ function removeBoss( id, next ) {
  * @param {string} id id from Vice_principal to be removed from its role
  * @param {function} next Callback
  */
-function removeVicePrincipal( id ) {
+function removeVicePrincipal( id, next ) {
     const RoleMapping = app.models.RoleMapping;
     const VicePrincipal = app.models.Vice_principal;
     
