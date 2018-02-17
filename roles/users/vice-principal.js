@@ -8,6 +8,7 @@ module.exports = {
         id: 3,
         name: 'Juan Manuel Topete',
         username: 'jmanueltopete',
+        hasRole: true,
         email: 'jmanueltopete@gmail.com',
         password: '123qwe'
     },
@@ -15,6 +16,7 @@ module.exports = {
         id: 4,
         name: 'Michel',
         username: 'Michel',
+        hasRole: true,
         email: 'michel@gmail.com',
         password: '123qwe'
     }]
