@@ -2,10 +2,17 @@
 
 module.exports = Requisition => {
 
-  //Validations.
-  Requisition.validatesLengthOf('folio', { max: 6, message: { max: 'Folio supera el rango.' } });
-  Requisition.validatesUniquenessOf('folio', { message: 'Folio no se puede repetir.' });
-
+  /**
+   * Remote hook for validating if folio exists
+   * If exists, validate its uniqueness
+   */
+  Requisition.beforeRemote('create', (ctx, unused, next) => {
+    const folio = ctx.req.body.folio;
+    if ( folio !== undefined )
+      Requisition.validatesUniquenessOf('folio', { message: 'Folio no se puede repetir.' });
+    next();
+  });
+  
   //Disable build-in methods.
   Requisition.disableRemoteMethodByName("deleteById", true);
 };
