@@ -23,37 +23,34 @@ const   app = require('../server/server'),
  * @param cb Callback with two parameters (error, result) 
  */
 const createRole = (model, collection, newRole, roleDescription, cb) => {
-  console.log('roleDescription: ', JSON.stringify(roleDescription, null, '  '));
-  console.log('newRole: ', JSON.stringify(newRole, null, '  '));
-  console.log('collection: ', JSON.stringify(collection, null, '  '));
-  console.log('model: ', JSON.stringify(model, null, '  '));
-  console.log("En createRole");
 
   waterfall([
 
     //Verify if the current model exists on the database.
     next => {
-      console.log("------EN PRIMER NEXT------")
+      console.log("------EN PRIMER NEXT------");
       each(collection, (userToRegister, callback) => {
-
+        
         model.exists(userToRegister.id)
-            .then( exists => {
-              userToRegister.alreadyExists = exists;
-              callback();
-            })
-            .catch( error => next(error));
-        },
-        err => {
-          if(err) return next(error);
-          
-          return next(null, collection)
+        .then( exists => {
+          userToRegister.alreadyExists = exists;
+          callback();
         })
+        .catch( error => next(error));
+      },
+      err => {
+        if(err) 
+          return next(error);
+        
+        return next(null, collection)
+      })
 
     },
 
-    //Create the current model on the database if it does not exists currently.
+    //Create the current models on the datasource if they do not exists yet.
     (collectionOfUsers, next) => {
-
+      console.log("------EN SEGUNDO NEXT------");
+      
       //Users that do not exists currently on the database.
       const usersToRegister = collectionOfUsers.filter( user => !user.alreadyExists )
 
@@ -68,9 +65,9 @@ const createRole = (model, collection, newRole, roleDescription, cb) => {
     },
     
     (users, next) => {
-      console.log("En la siguiente");
+      console.log("------EN TERCER NEXT------");
       
-      console.log("Mis users", JSON.stringify(users, null, '  '));
+      // console.log("Mis users", JSON.stringify(users, null, '  '));
     }
 
 
