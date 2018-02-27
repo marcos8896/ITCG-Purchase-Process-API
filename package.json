@@ -17,7 +17,7 @@
     "migrate": "node server/create-lb-tables && node seeds/prepare-seeds",
     "create-roles-users": "node roles/create-roles-users",
     "dev-setup": "npm run create-tables && npm run create-roles-users && nodemon",
-    "initial-prod-setup": "npm run create-tables && npm run create-roles-users && node . web: node --optimize_for_size --max_old_space_size=920 --gc_interval=100"    
+    "initial-prod-setup": "npm run update-tables && npm run create-roles-users && node . web: node --optimize_for_size --max_old_space_size=920 --gc_interval=100"    
   },
   "dependencies": {
     "async": "^2.6.0",
