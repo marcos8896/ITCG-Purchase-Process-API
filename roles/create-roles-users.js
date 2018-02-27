@@ -47,7 +47,7 @@ const createRole = (model, collection, newRole, roleDescription, cb) => {
 
       },
 
-      //Create the current models on the datasource if they do not exists yet.
+      //Create the current models on the datasource if they do not exist yet.
       (collectionOfUsers, next) => {
         
         //Users that do not exists currently on the database.
@@ -63,7 +63,7 @@ const createRole = (model, collection, newRole, roleDescription, cb) => {
         });
       },
       
-      //Return an array whether with an existing role if or with an empty array.
+      //Return an model instance whether with an existing role or with a null.
       (createdUsers, next) => {
         
         Role.findOne({ where: {name: newRole} },
