@@ -21,6 +21,7 @@ DB_NAME=
 | ROL_PLANNING | Plannings' role | ROL_PLANNING=myplanningrole |
 | ROL_VICE_PRINCIPAL | Viceprincipal's role | ROL_VICE_PRINCIPAL=miviceprincipalrole |
 | ROL_BOSS_DEPARTMENT | Boss deparment's role | ROL_BOSS_DEPARTMENT=mibossdeparmentrole |
+| PLANNING_ID | - | - |
 | PLANNING_NAME | - | - |
 | PLANNING_USERNAME | - | - |
 | PLANNING_EMAIL | - | - |
