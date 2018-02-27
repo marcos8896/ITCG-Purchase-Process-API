@@ -12,10 +12,11 @@ const   app = require('../server/server'),
 
 /**
  * 
- * Main method for creating a new collection of registers  to
+ * Main method for creating a new collection of registers to
  * a specified model and added to a new role specified in the 
  * method's params.
- * 
+ * @author Brandon Emmanuel Villa Cárdenas <bornofos@gmail.com>
+ * @author Marcos Barrera del Río <elyomarcos@gmail.com>
  * @param model Indicates the model from where is going to create the registers
  * @param collection The collections of objects from {model}
  * @param newRole The name of the new role 
@@ -26,111 +27,104 @@ const createRole = (model, collection, newRole, roleDescription, cb) => {
 
   waterfall([
 
-    //Verify if the current model exists on the database.
-    next => {
-      console.log("------EN PRIMER NEXT------");
-      each(collection, (userToRegister, callback) => {
-        
-        model.exists(userToRegister.id)
-        .then( exists => {
-          userToRegister.alreadyExists = exists;
-          callback();
+      //Verify if the current model exists on the database.
+      next => {
+        each(collection, (userToRegister, callback) => {
+          
+          model.exists(userToRegister.id)
+          .then( exists => {
+            userToRegister.alreadyExists = exists;
+            callback();
+          })
+          .catch( error => next(error));
+        },
+        err => {
+          if(err) 
+            return next(error);
+          
+          return next(null, collection);
         })
-        .catch( error => next(error));
+
       },
-      err => {
-        if(err) 
-          return next(error);
+
+      //Create the current models on the datasource if they do not exists yet.
+      (collectionOfUsers, next) => {
         
-        return next(null, collection)
-      })
+        //Users that do not exists currently on the database.
+        const usersToRegister = collectionOfUsers.filter( user => !user.alreadyExists )
 
-    },
+        model.create( usersToRegister, (err, createdUsers) => {
+          
+          if ( err )
+            return next( err );
+          
+          return next(null, createdUsers);
 
-    //Create the current models on the datasource if they do not exists yet.
-    (collectionOfUsers, next) => {
-      console.log("------EN SEGUNDO NEXT------");
-      
-      //Users that do not exists currently on the database.
-      const usersToRegister = collectionOfUsers.filter( user => !user.alreadyExists )
-
-      model.create( usersToRegister, (err, users) => {
-        
-        if ( err )
-          return next( err );
-        
-        return next(null, users);
-
-      });
-    },
-    
-    (users, next) => {
-      console.log("------EN TERCER NEXT------");
-      
-      // console.log("Mis users", JSON.stringify(users, null, '  '));
-    }
-
-
-  ],
-
-  error => {
-    if (error)
-      console.log(error);
-
-    //More code.
-
-  }
-  );
-
-
-    
-        // // create the {newRole} role
-        // Role.create({
-        //     name: newRole,
-        //     description: roleDescription
-        // }, (err, role) => {
-        //     if ( err ) cb( err );
-        //     console.log(`Rol: ${newRole} created`)
-        //     each( collection, (user, next) => {
-        //         //make user part of {newRole}
-        //         role.principals.create({
-        //             principalType: RoleMapping.USER,
-        //             principalId: user.id
-        //         }, (err, principal) => {
-        //             if ( err ) next ( err );
-        //             console.log('Principal created: ', principal);
-        //             next();
-        //         })
-        //     }, error => error ? cb( error ) : cb( null, 'Success' ));
-        // });
-
-    /*
-
-      model.create( collection, (err, users) => {
-        if ( err ) return cb( err );
-        // create the {newRole} role
-        Role.create({
-            name: newRole,
-            description: roleDescription
-        }, (err, role) => {
-            if ( err ) cb( err );
-            console.log(`Rol: ${newRole} created`)
-            each( collection, (user, next) => {
-                //make user part of {newRole}
-                role.principals.create({
-                    principalType: RoleMapping.USER,
-                    principalId: user.id
-                }, (err, principal) => {
-                    if ( err ) next ( err );
-                    console.log('Principal created: ', principal);
-                    next();
-                })
-            }, error => error ? cb( error ) : cb( null, 'Success' ));
         });
-    });
+      },
+      
+      //Return an array whether with an existing role if or with an empty array.
+      (createdUsers, next) => {
+        
+        Role.findOne({ where: {name: newRole} },
+          function(err, role){
+            if (err) 
+            return next(err);
+            
+            return next(null, createdUsers, role);
 
-    */
+        })
+      },
 
+      //Create a new Role if the passed role (second param called 'role') is null.
+      //Otherwise it will use the one that is being passed as second param. 
+      (createdUsers, role, next) => {
+        
+        if ( role === null ) {
+
+          //Create the {newRole} role
+          Role.create({ name: newRole, description: roleDescription }, (err, role) => {
+              
+            if ( err ) 
+              return next( err );
+            
+            console.log(`Rol: ${newRole} created`)
+            return next(null, role, createdUsers);
+
+          });
+
+        } else {
+          return next(null, role, createdUsers);
+
+        }
+      },
+
+      //Attach role to every single user.
+      (role, createdUsers, next) => {
+
+        each( createdUsers, (user, callback) => {
+          //make user part of {newRole}
+          role.principals.create({
+              principalType: RoleMapping.USER,
+              principalId: user.id
+          }, (err, principal) => {
+              if ( err ) callback( err );
+              console.log('Principal created: ', principal);
+              callback();
+          })
+        }, error => error ? next( error ) : next( null, 'Success'));
+      }
+    ],
+
+    (error, message) => {
+      if (error)
+        return cb(error);
+      
+      console.log('Message: ', `${message} for ${newRole}`);
+      return cb(null, message);
+
+    }
+  );
 
 }
 
@@ -159,6 +153,6 @@ parallel({
 },
 (error, result) => {
     if ( error ) throw error;
-    console.log('Script succesfully finished :D')
+    console.log('Script successfully finished :P');
     process.exit(0);
 })
