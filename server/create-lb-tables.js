@@ -1,16 +1,26 @@
 var server = require('./server');
 var ds = server.dataSources.posgresql_ds;
-var lbTables = ['User', 'AccessToken', 'ACL', 'RoleMapping', 'Role',
-               'Concept', 'Subdirection','Department',
-               'Concept_Requisition',  'Input_output', 
-               'Input_output_details', 'Provider', 'Purchase_order', 
-               'Purchase_order_Requisition', 'Requisition', 'Project', 'Program',
-               'Budget_key', 'Budget_key_details', 'Boss_department', 'Vice_principal',
-               'Planning'
-              ];
-              
-ds.automigrate(lbTables, function(er) {
-  if (er) throw er;
-  console.log('Loopback tables [' + lbTables + '] created in ', ds.adapter.name);
-  ds.disconnect();
-});
+const { getNameModelsArray } = require('../utils/models-information.service');
+
+
+/**
+ * @author Marcos Barrera del Río <elyomarcos@gmail.com>
+ * Run the proper migrations by loading automatically all the new custom models.
+ * @returns {*} 
+ */
+function runModelsMigrations() {
+  getNameModelsArray().then( names => {
+
+    //There's no need to add new custom models in the 'lbTables', since they are
+    //being loaded automatically from the models' JSON files.
+    var lbTables = ['User', 'AccessToken', 'ACL', 'RoleMapping', 'Role', ...names];
+  
+    ds.automigrate(lbTables, function(er) {
+      if (er) throw er;
+      console.log('Loopback tables [' + lbTables + '] created in ', ds.adapter.name);
+      ds.disconnect();
+    });
+  })
+}
+
+runModelsMigrations();
