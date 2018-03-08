@@ -108,6 +108,20 @@
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "__get__requisition"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "viceprincipal",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "viceprincipal",
+      "permission": "ALLOW",
+      "property": "__get__requisition"
     }
   ],
   "methods": {}
