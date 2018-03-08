@@ -43,8 +43,7 @@
       "foreignKey": "boss_departmentId"
     }
   },
-  "acls": [
-    {
+  "acls": [{
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
@@ -112,3 +111,4 @@
   ],
   "methods": {}
 }
+
