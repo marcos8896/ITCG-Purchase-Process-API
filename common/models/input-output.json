@@ -17,11 +17,7 @@
   },
   "validations": [],
   "relations": {
-    "requisition": {
-      "type": "hasOne",
-      "model": "Requisition",
-      "foreignKey": ""
-    }
+
   },
   "acls": [],
   "methods": {}
