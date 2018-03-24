@@ -29,11 +29,6 @@
       "type": "belongsTo",
       "model": "Concept",
       "foreignKey": ""
-    },
-    "requisition": {
-      "type": "belongsTo",
-      "model": "Requisition",
-      "foreignKey": ""
     }
   },
   "acls": [],
