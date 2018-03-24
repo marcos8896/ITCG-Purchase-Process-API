@@ -3,10 +3,13 @@
   "name": "Budget_key_details",
   "properties_seeds": [
     {
-      "action_number": ""
+      "action_number": "{{random.number({\"min\":1, \"max\":1000000})}}"
     },
     {
-      "description": ""
+      "budget_keyId": "{{random.number({\"min\":1, \"max\":20})}}"
+    },
+    {
+      "description": "{{random.words}} - {{random.words}}"
     }
   ]
 }
