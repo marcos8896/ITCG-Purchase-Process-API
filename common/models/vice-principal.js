@@ -1,4 +1,5 @@
 'use strict';
+const vicePrincipalService = require('./vice-principal.service');
 
 module.exports = Viceprincipal => {
     const app = require('../../server/server');
@@ -24,6 +25,28 @@ module.exports = Viceprincipal => {
     Viceprincipal.beforeRemote('create', (ctx, unused, next) => {
         ctx.req.body.id = uuidv1();
         next();
+    })
+
+    /** 
+     * Obtain relation: 
+     * VicePrincipal 
+     *  (has) Subdirection 
+     *      (has) Department 
+     *          (has) BossDepartment 
+     *              (has) Requisition
+     * 
+     */
+    Viceprincipal.getRequisitionsToSign = vicePrincipalService.getRequisitionsToSign
+
+    /**
+     * Remote method for getRequisitionsToSign
+     */
+    Viceprincipal.remoteMethod('getRequisitionsToSign', {
+        http: { path: '/getRequisitionsToSign/:vice_principalId', verb: 'get'},
+        accepts: { arg: 'vice_principalId', type: 'string' },
+        returns:[
+            { arg: 'result', type: 'object' },
+        ]
     })
 };
 
