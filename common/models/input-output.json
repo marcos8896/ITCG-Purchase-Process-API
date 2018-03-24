@@ -17,9 +17,9 @@
   },
   "validations": [],
   "relations": {
-    "provider": {
-      "type": "belongsTo",
-      "model": "Provider",
+    "requisition": {
+      "type": "hasOne",
+      "model": "Requisition",
       "foreignKey": ""
     }
   },
