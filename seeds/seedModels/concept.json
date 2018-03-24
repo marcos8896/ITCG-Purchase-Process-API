@@ -3,7 +3,10 @@
   "name": "Concept",
   "properties_seeds": [
     {
-      "description": "{{lorem.text}}"
+      "description": "{{lorem.text}} - {{random.words}}"
+    },
+    {
+      "concept_number": "{{random.number}}"
     }
   ]
 }
