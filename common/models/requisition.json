@@ -61,11 +61,6 @@
       "model": "Concept_Requisition",
       "foreignKey": "requisitionId"
     },
-    "input_output_details": {
-      "type": "hasMany",
-      "model": "Input_output_details",
-      "foreignKey": "requisitionId"
-    },
     "purchase_order_Requisition": {
       "type": "hasMany",
       "model": "Purchase_order_Requisition",

@@ -31,11 +31,6 @@
       "type": "hasMany",
       "model": "Purchase_order",
       "foreignKey": "providerId"
-    },
-    "input_output": {
-      "type": "hasMany",
-      "model": "Input_output",
-      "foreignKey": "providerId"
     }
   },
   "acls": [

@@ -17,11 +17,7 @@
   },
   "validations": [],
   "relations": {
-    "provider": {
-      "type": "belongsTo",
-      "model": "Provider",
-      "foreignKey": ""
-    }
+
   },
   "acls": [],
   "methods": {}
