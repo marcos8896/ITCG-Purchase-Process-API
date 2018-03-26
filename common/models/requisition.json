@@ -73,12 +73,15 @@
     }
   },
   "acls": [
+
     {
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
     },
+
+
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
@@ -86,6 +89,29 @@
       "permission": "ALLOW",
       "property": "create"
     },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "replaceById"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "bossdepartment",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+
+
     {
       "accessType": "READ",
       "principalType": "ROLE",
