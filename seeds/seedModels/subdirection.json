@@ -3,10 +3,10 @@
   "name": "Subdirection",
   "properties_seeds": [
     {
-      "name": "{{name.jobArea}} {{name.jobArea}}"
+      "name": "{{name.jobArea}} - {{random.words}}"
     },
     {
-      "boss_name": "{{name.suffix}} {{name.findName}} {{name.lastName}}"
+      "vice_principalId": "{{random.number({\"min\":3, \"max\":4})}}"
     }
   ]
 }

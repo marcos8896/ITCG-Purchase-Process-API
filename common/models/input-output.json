@@ -16,7 +16,13 @@
     }
   },
   "validations": [],
-  "relations": { },
+  "relations": {
+    "input_output_details": {
+      "type": "hasMany",
+      "model": "Input_output_details",
+      "foreignKey": "input_outputId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

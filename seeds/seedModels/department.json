@@ -3,10 +3,16 @@
   "name": "Department",
   "properties_seeds": [
     {
-      "name": ""
+      "name": "{{commerce.department}} - {{random.words}}"
     },
     {
-      "budget": ""
+      "budget": "{{random.number({\"min\":99999, \"max\":999999})}}"
+    },
+    {
+      "subdirectionId": "{{random.number({\"min\":1, \"max\":20})}}"
+    },
+    {
+      "boss_departmentId": "{{random.number({\"min\":1, \"max\":2})}}"
     }
   ]
 }

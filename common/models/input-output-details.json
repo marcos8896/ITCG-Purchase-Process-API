@@ -29,6 +29,11 @@
       "type": "belongsTo",
       "model": "Concept",
       "foreignKey": ""
+    },
+    "input_output": {
+      "type": "belongsTo",
+      "model": "Input_output",
+      "foreignKey": ""
     }
   },
   "acls": [],

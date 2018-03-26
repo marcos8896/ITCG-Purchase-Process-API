@@ -3,10 +3,19 @@
   "name": "Budget_key",
   "properties_seeds": [
     {
-      "budget_key_id": ""
+      "budget_key_id": "{{random.number({\"min\":1, \"max\":10000000})}}"
     },
     {
-      "piid_ojectives": ""
+      "piid_ojectives": "{{random.number({\"min\":1, \"max\":100})}}"
+    },
+    {
+      "programId": "{{random.number({\"min\":1, \"max\":20})}}"
+    },
+    {
+      "projectId": "{{random.number({\"min\":1, \"max\":20})}}"
+    },
+    {
+      "subdirectionId": "{{random.number({\"min\":1, \"max\":20})}}"
     }
   ]
 }

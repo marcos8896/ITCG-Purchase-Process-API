@@ -3,28 +3,19 @@
   "name": "Requisition",
   "properties_seeds": [
     {
-      "folio": ""
+      "date": "{{date.recent}}"
     },
     {
-      "date": ""
+      "action": "{{random.words}} - {{random.words}}"
     },
     {
-      "action": ""
+      "providerId": "{{random.number({\"min\":1, \"max\":20})}}"
     },
     {
-      "acceptance_date": ""
+      "budget_keyId": "{{random.number({\"min\":1, \"max\":20})}}"
     },
     {
-      "check_boss": ""
-    },
-    {
-      "check_planning": ""
-    },
-    {
-      "check_subdirection": ""
-    },
-    {
-      "status": ""
+      "boss_departmentId": "{{random.number({\"min\":1, \"max\":2})}}"
     }
   ]
 }

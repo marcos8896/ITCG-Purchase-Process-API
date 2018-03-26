@@ -3,7 +3,7 @@
   "name": "Program",
   "properties_seeds": [
     {
-      "program_number": "{{ramdom.number}}"
+      "program_number": "{{random.number}}"
     },
     {
       "description": "{{random.words}}"

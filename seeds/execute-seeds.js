@@ -8,7 +8,12 @@ const models = require('../server/server').models;
 
 const args = require('yargs').argv;
 const singleModel = args._[0];
-const numRecords =  args._[1];
+
+//Restriction to generate 20 records or more for convinience on hardcored seed models.
+const numRecords =  parseInt(args._[1]) >= 20 ? parseInt(args._[1]) : 20 ;
+
+console.log("-------------MINIMUM AMOUNT OF RECORDS: 20-------------\n")
+
 
 console.log("-------------INPUT-------------\n")
 console.log(`Model: '${singleModel}'`);
