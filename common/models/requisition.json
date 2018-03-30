@@ -120,6 +120,13 @@
       "property": "findById"
     },
     {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "viceprincipal",
+      "permission": "ALLOW",
+      "property": "findById"
+    },
+    {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
       "principalId": "$owner",
