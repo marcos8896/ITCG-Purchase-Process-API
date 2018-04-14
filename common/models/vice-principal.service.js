@@ -38,7 +38,7 @@ function getRequisitionsToSign(vicePrincipalId, cb) {
                                             { check_subdirection: {'like': 'Esperando'} },
                                             { check_planning: {'like': 'Esperando'} }
                                         ]},
-                                        fields: ['folio', 'check_boss']
+                                        fields: ['id','date', 'action']
                                     }
                                 }
                             }
