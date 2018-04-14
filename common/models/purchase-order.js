@@ -1,5 +1,6 @@
 'use strict';
-const app = require('../../server/server');
+const app = require('../../server/server'),
+      REQUISITION_STATES = require('../../shared/requisition_states');
 
 module.exports = Purchaseorder => {
 
@@ -25,9 +26,23 @@ module.exports = Purchaseorder => {
     //relationship.
     relatedDetails.forEach( detail => detail.purchase_orderId = purchaseOrder.id )
     
-    PurchaseOrderRequisition.create(relatedDetails)
-      .then( createdModels => next())
-      .catch( err => next(err));
+    const getAllIds =relatedDetails.map( detail => detail.requisitionId );
+
+    //Remove duplicate values.
+    const idToUpdates = Array.from(new Set(getAllIds));
+    const Requisition = app.models.Requisition;
+
+    //Promises to update every Requisition that matches the id from idToUpdates array
+    let promises = idToUpdates.map((id, index) => 
+      Requisition.upsertWithWhere(
+        {id:  idToUpdates[index]}, {status : REQUISITION_STATES.ORDENADA}
+      )
+    );
+    
+    Promise.all([ ...promises, PurchaseOrderRequisition.create(relatedDetails)])
+      .then( data => next())
+      .catch( err => console.log('err', err));
+
   });
 
 };
