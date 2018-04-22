@@ -41,7 +41,7 @@ module.exports = Purchaseorder => {
     
     Promise.all([ ...promises, PurchaseOrderRequisition.create(relatedDetails)])
       .then( data => next())
-      .catch( err => console.log('err', err));
+      .catch( err => next(err));
 
   });
 
