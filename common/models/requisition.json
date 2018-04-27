@@ -106,7 +106,7 @@
     {
       "accessType": "EXECUTE",
       "principalType": "ROLE",
-      "principalId": "bossdepartment",
+      "principalId": "planningdepartment",
       "permission": "ALLOW",
       "property": "findById"
     },
