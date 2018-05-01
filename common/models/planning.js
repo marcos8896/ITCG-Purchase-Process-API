@@ -93,4 +93,16 @@ module.exports = Planning => {
         ]
     })
 
+
+    Planning.getRequisitionsToSign = planningService.getRequisitionsToSign
+    /**
+     * Remote method for getRequisitionsToSign
+     */
+    Planning.remoteMethod('getRequisitionsToSign', {
+        http: { path: '/getRequisitionsToSign', verb: 'get'},
+        returns:[
+            { arg: 'result', type: 'object' },
+        ]
+    })
+
 };
