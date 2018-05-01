@@ -162,23 +162,30 @@ function getRequisitionsToSign(cb) {
     const BossDepartment = app.models.Boss_department;
 
     const filter = {
+        fields: ['id'],
         include:[ 
             {
                 relation: 'department',
                 scope: {
-                    fields: ['id', 'name']
-                }
-            },
-            {
-                relation: 'requisition',
-                scope: {
-                    fields: ['id', 'date', 'action'],
-                    where: { and: [
-                        { status: {'like': 'Esperando'} },
-                        { check_boss: {'like': 'Aceptado'} },
-                        { check_subdirection: {'like': 'Aceptado'} },
-                        { check_planning: {'like': 'Esperando'} }
-                    ]}
+                    fields: ['id', 'name'],
+                    include: {
+                        relation: 'boss_department',
+                        scope: {
+                            fields: ['id', 'name'],
+                            include: {
+                                relation: 'requisition',
+                                scope: {
+                                    fields: ['id', 'date', 'action'],
+                                    where: { and: [
+                                        { status: {'like': 'Esperando'} },
+                                        { check_boss: {'like': 'Aceptado'} },
+                                        { check_subdirection: {'like': 'Aceptado'} },
+                                        { check_planning: {'like': 'Esperando'} }
+                                    ]}
+                                }
+                            }
+                        }
+                    }
                 }
             }
         ],
