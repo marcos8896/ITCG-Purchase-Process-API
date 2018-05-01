@@ -57,6 +57,13 @@
       "principalId": "planningdepartment",
       "permission": "ALLOW",
       "property": "removeVicePrincipal"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "planningdepartment",
+      "permission": "ALLOW",
+      "property": "getRequisitionsToSign"
     }
   ],
   "methods": {}
