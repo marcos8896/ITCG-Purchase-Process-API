@@ -153,11 +153,49 @@ function addUserToRol( Model, id, rolName) {
     })
 }
 
+/** 
+ * Obtain relation all requisitions to sign
+ * where check_boss and check_sundirection are in status: Aceptado 
+ * @param { function } cb Callback
+ */
+function getRequisitionsToSign(cb) {
+    const BossDepartment = app.models.Boss_department;
+
+    const filter = {
+        include:[ 
+            {
+                relation: 'department',
+                scope: {
+                    fields: ['id', 'name']
+                }
+            },
+            {
+                relation: 'requisition',
+                scope: {
+                    fields: ['id', 'date', 'action'],
+                    where: { and: [
+                        { status: {'like': 'Esperando'} },
+                        { check_boss: {'like': 'Aceptado'} },
+                        { check_subdirection: {'like': 'Aceptado'} },
+                        { check_planning: {'like': 'Esperando'} }
+                    ]}
+                }
+            }
+        ],
+    };
+    
+    BossDepartment.find( filter )
+        .then( instance => cb(null, instance))
+        .catch(err => cb(err));
+
+}
+
 module.exports = {
     beforeRemoteCreate,
     afterRemoteLogin,
     addBoss,
     addVicePrincipal,
     removeBoss,
-    removeVicePrincipal
+    removeVicePrincipal,
+    getRequisitionsToSign
 }
